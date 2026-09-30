@@ -1,0 +1,26 @@
+{
+  "id": "T01",
+  "domain": "tic-tac-toe",
+  "title": "Winner detection",
+  "signature": "def winner(board: list[list[str]]) -> str | None",
+  "nl_description": "The function receives a 3x3 game board. Each cell may contain 'X', 'O', or an empty string ''. The function checks whether anyone has won. A player wins if three of their symbols are placed in the same row, in the same column, or on one of the diagonals. If a winner is found, the function returns their symbol: 'X' or 'O'. If there is no winner or the game is still in progress, the function returns None.",
+  "requirements": [
+    {"id": "R1", "text": "Return 'X' if three 'X' form a line."},
+    {"id": "R2", "text": "Return 'O' if three 'O' form a line."},
+    {"id": "R3", "text": "Return None if there is no winner."},
+    {"id": "R4", "text": "Do not modify the input board."}
+  ],
+  "correct_impls": [
+    "impl/T01/correct_a.py",
+    "impl/T01/correct_b.py"
+  ],
+  "faulty_impls": {
+    "hand_written": [
+      "impl/T01/faulty_no_diag.py",
+      "impl/T01/faulty_wrong_none.py"
+    ],
+    "mutants": []
+  },
+  "hidden_tests": "tests_hidden/T01.py",
+  "notes": "Boundary cases: empty board, draw, two lines at once."
+}

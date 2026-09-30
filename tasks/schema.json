@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BenchmarkTask",
+  "description": "Schema for one benchmark task used to evaluate LLM-generated specifications",
+  "type": "object",
+  "required": [
+    "id",
+    "domain",
+    "title",
+    "signature",
+    "nl_description",
+    "requirements",
+    "correct_impls",
+    "faulty_impls",
+    "hidden_tests"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^T[0-9]{2}$",
+      "description": "Unique task identifier, e.g. T01, T02, ..., T40"
+    },
+    "domain": {
+      "type": "string",
+      "description": "Game domain, e.g. tic-tac-toe, chess, snake, 2048"
+    },
+    "title": {
+      "type": "string",
+      "description": "Short task title in English"
+    },
+    "signature": {
+      "type": "string",
+      "description": "Python function signature"
+    },
+    "nl_description": {
+      "type": "string",
+      "minLength": 100,
+      "maxLength": 800,
+      "description": "Natural-language task description (5-8 lines)"
+    },
+    "requirements": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 5,
+      "description": "Atomic behavioral requirements used for requirement coverage",
+      "items": {
+        "type": "object",
+        "required": ["id", "text"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^R[0-9]+$",
+            "description": "Requirement identifier, e.g. R1, R2, ..."
+          },
+          "text": {
+            "type": "string",
+            "description": "Requirement text in English"
+          }
+        }
+      }
+    },
+    "correct_impls": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Paths to correct implementations",
+      "items": {
+        "type": "string"
+      }
+    },
+    "faulty_impls": {
+      "type": "object",
+      "required": ["hand_written", "mutants"],
+      "description": "Paths to faulty implementations",
+      "properties": {
+        "hand_written": {
+          "type": "array",
+          "description": "Hand-written faulty implementations",
+          "items": {
+            "type": "string"
+          }
+        },
+        "mutants": {
+          "type": "array",
+          "description": "Mutation-generated faulty implementations",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "hidden_tests": {
+      "type": "string",
+      "description": "Path to hidden reference tests, used only for evaluation"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional notes: boundary cases, domain specifics"
+    }
+  }
+}
