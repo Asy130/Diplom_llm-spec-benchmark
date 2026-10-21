@@ -1,0 +1,25 @@
+
+You are an expert software tester. You are given a natural-language description of a Python function and its signature.
+
+Description:
+{nl_description}
+
+Signature:
+{signature}
+
+Generate property-based tests using the `hypothesis` library.
+
+Rules:
+- Use @given with appropriate strategies.
+- Each property must be independently runnable.
+- Output ONLY executable Python code.
+- Import hypothesis and the function under test as `func`.
+
+Output format:
+```python
+from hypothesis import given, strategies as st
+# The function 'func' will be provided by the test harness.
+
+@given(...)
+def test_property_1(...):
+    ...

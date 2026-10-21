@@ -1,0 +1,20 @@
+{
+  "id": "T08",
+  "domain": "sudoku",
+  "title": "Row validity",
+  "signature": "def is_valid_row(row: list[int]) -> bool",
+  "nl_description": "The function receives a list of 9 numbers — one sudoku row. It checks whether this row is valid. A row is valid if the numbers from 1 to 9 do not repeat. Zero means an empty cell — there can be any number of such cells. The function returns True if the row is valid. If any number from 1 to 9 appears more than once, the function returns False.",
+  "requirements": [
+    {"id": "R1", "text": "Return True if there are no repeated numbers 1-9."},
+    {"id": "R2", "text": "Zero is allowed multiple times."},
+    {"id": "R3", "text": "Return False if any number 1-9 repeats."},
+    {"id": "R4", "text": "Do not modify the input list."}
+  ],
+  "correct_impls": ["impl/T08/correct_a.py"],
+  "faulty_impls": {
+    "hand_written": ["impl/T08/faulty_zero_dup.py"],
+    "mutants": []
+  },
+  "hidden_tests": "tests_hidden/T08.py",
+  "notes": "Boundary cases: all zeros, duplicates of 1-9."
+}
